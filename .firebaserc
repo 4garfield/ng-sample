@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-sample-434f1": {
+      "hosting": {
+        "ng-sample": [
+          "ng-sample-434f1"
+        ]
+      }
+    }
+  }
+}
