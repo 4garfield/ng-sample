@@ -1,12 +1,10 @@
 {
-  "editor.defaultFormatter": "HookyQR.beautify",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
-  "eslint.run": "onSave",
   "files.eol": "\n",
-  "files.trimTrailingWhitespace": true,
   "html.format.enable": true,
   "window.zoomLevel": 1,
   "workbench.colorTheme": "One Monokai",
