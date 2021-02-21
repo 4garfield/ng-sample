@@ -1,6 +1,8 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
+
+import { USER_AGENT } from './useragent';
 
 const SSR_STATE_KEY = makeStateKey<any>('sample-ssr-state');
 
@@ -14,13 +16,17 @@ export class SsrService {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private transferState: TransferState
+    private transferState: TransferState,
+    @Optional() @Inject(USER_AGENT) private _userAgent: string
   ) {
     if (this.isPlatformBrowser()) {
       this.state = this.transferState.get(SSR_STATE_KEY, {});
     } else {
-      this.state = global.getSsrState() || {};
+      this.state = {
+        ua: this._userAgent || '',
+      };
     }
+
     console.log(this.state);
   }
 

@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Inject, Optional } from '@angular/core';
-import { USER_AGENT } from './useragent';
+import { AfterViewInit, Component } from '@angular/core';
 import { SsrService } from './ssr.service';
 
 @Component({
@@ -10,16 +9,7 @@ import { SsrService } from './ssr.service';
 export class AppComponent implements AfterViewInit {
   title = 'ng-sample';
 
-  constructor(
-    private ssrService: SsrService,
-    @Optional() @Inject(USER_AGENT) private _userAgent: string
-  ) {
-    let userAgent = '';
-    if (this._userAgent) {
-      userAgent = this._userAgent;
-    }
-    console.log('userAgent', userAgent);
-  }
+  constructor(private ssrService: SsrService) {}
 
   ngAfterViewInit(): void {
     if (this.ssrService.isPlatformServer()) {
